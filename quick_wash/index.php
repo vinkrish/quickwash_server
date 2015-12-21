@@ -1,8 +1,8 @@
 <?php
 
-$json = file_get_contents('php://input');
+include 'config.php';
 
-//logToFile("post.txt",$json);
+$json = file_get_contents('php://input');
 
 function logToFile($filename,$msg) {
       $fd=fopen($filename,"a");
@@ -10,16 +10,6 @@ function logToFile($filename,$msg) {
       fwrite($fd,$str."\n");
       fclose($fd);
   }
-
-$dbhost = "localhost";
-$dbuser = "vingelin_vingel";
-$dbpass = "Thisisntfunmysql";
-$dbname = "vingelin_quickwash";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-if (mysqli_connect_errno()) {
-    die("db failed : ");
-}
 
 $orderRequest = json_decode($json,true);
 
@@ -53,7 +43,6 @@ if ($result) {
 	//die("query failed. " . mysqli_error($connection));
 }
 
-//logToFile("post.txt", json_encode($order));
 echo json_encode($order);
 
 ?>

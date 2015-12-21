@@ -1,18 +1,6 @@
 <?php
-    
-    $dbhost = "localhost";
-    $dbuser = "vingelin_vingel";
-    $dbpass = "Thisisntfunmysql";
-    $dbname = "vingelin_quickwash";
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+include 'config.php';
 
-    if (mysqli_connect_errno()) {
-        die("db failed : ");
-    }
-
-?>
-
-<?php
     $query = "SELECT * ";
     $query .= "FROM `order` ";
     $query .= "WHERE status = 0";
